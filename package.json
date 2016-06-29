@@ -1,0 +1,22 @@
+{
+  "name": "streaminfo",
+  "version": "1.0.0",
+  "description": "Custom page to view twitchalert tips, subs, resubs, cheers, and chat controls.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbkynd/streaminfo.git"
+  },
+  "author": "DBKynd <db@dbkynd.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dbkynd/streaminfo/issues"
+  },
+  "homepage": "https://github.com/dbkynd/streaminfo#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
