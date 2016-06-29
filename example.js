@@ -7,9 +7,9 @@ var options = {
     twitch: {
         nick: "", //Your Twitch Username
         oauth: "", //Your oauth token. Generate at: http://www.twitchapps.com/tmi/
-        channel: "", //The twitch channel to monitor
-        client_id: "" //A Twitch app's client ID to avoid any rate limits - Optional
-    }
+        channel: "" //The twitch channel to monitor
+    },
+    mod_bot_name: "NightBot" //This sets the name in the page's status bar and is what we monitor for mod/unmod messages to see if it's in-channel
 };
 
 app = new app(options);
