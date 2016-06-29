@@ -24,14 +24,14 @@
         });
 
         io.on('subscription', function (data) {
-            console.log('subscription: ' + data.name + " x" + (data.months ? data.months : 1));
+            console.log('subscription: ' + data.username + " x" + (data.months ? data.months : 1));
             if (data.months) return; //Exit if not a new sub
-            $('.name').text(data.name);
+            $('.name').text(data.username);
         });
 
-        io.on('last_new_sub', function (name) {
-            console.log('Last new sub: ' + name);
-            $('.name').text(name);
+        io.on('last_new_sub', function (username) {
+            console.log('Last new sub: ' + username);
+            $('.name').text(username);
         });
     </script>
     <style>
