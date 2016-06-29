@@ -3,3 +3,7 @@ body {
     background: #141414;
     color: #fff;
 }
+
+button {
+    outline: 0;
+}
