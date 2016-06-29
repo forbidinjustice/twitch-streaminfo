@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/dbkynd/streaminfo#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "moment": "^2.13.0"
   }
 }
