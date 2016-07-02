@@ -29,9 +29,9 @@
             $('.name').text(data.username);
         });
 
-        io.on('last_new_sub', function (username) {
-            console.log('Last new sub: ' + username);
-            $('.name').text(username);
+        io.on('last_new_sub', function (data) {
+            console.log('Last new sub: ' + data.username);
+            $('.name').text(data.username);
         });
     </script>
     <style>
