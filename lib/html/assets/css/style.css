@@ -39,6 +39,7 @@ body {
     background: #ccc;
     position: absolute;
     max-height: 600px;
+    overflow: hidden;
 }
 
 .columns > div {
@@ -68,4 +69,77 @@ body {
 
 .amount {
     color: #f9d71a;
+}
+
+.channel_controls {
+    color: #000;
+    position: absolute;
+    bottom: 40px;
+    font-size: 14px;
+}
+
+.channel_controls > div {
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 168px;
+    height: 30px;
+    text-align: center;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .8s;
+    transition: .8s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #fff;
+    -webkit-transition: .8s;
+    transition: .8s;
+    z-index: 1;
+    border: 1px solid #9c9c9c;
+}
+
+input:checked + .slider {
+    background-color: #f9d71a;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(138px);
+    -ms-transform: translateX(138px);
+    transform: translateX(138px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.slider > span {
+    position: relative;
+    top: 5px;
 }
