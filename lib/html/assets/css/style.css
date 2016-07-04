@@ -35,11 +35,17 @@ body {
     background: #3d7ba6 !important;
 }
 
-.columns {
-    position: absolute;
+.upper {
+    position: relative;
     height: 520px;
     overflow: hidden;
     display: none;
+}
+
+.lower {
+    position: relative;
+    top: 530px;
+    height: 520px;
 }
 
 .column {
@@ -231,9 +237,11 @@ input:checked + .slider:before {
 }
 
 .queues {
-    /*display: none;*/
-    width: 16em;
+    display: none;
+    width: 25em;
     float: left;
+    position: relative;
+    top: 550px;
 }
 
 .queues h2 {
@@ -241,6 +249,7 @@ input:checked + .slider:before {
     color: #FFF;
     margin: 3px 3px 3px 13px;
     text-align: center;
+    font-weight: normal;
 }
 
 .queues ul {
@@ -280,8 +289,9 @@ input:checked + .slider:before {
 
 .queues h3 {
     color: #fff;
-    padding: 6px;
+    padding: 6px 0;
     position: relative;
+    font-weight: normal;
 }
 
 .queues .count {
@@ -305,6 +315,7 @@ input:checked + .slider:before {
     border-radius: 2px;
     border: solid #111 1px;
     padding-left: 15px;
+    outline: none;
 }
 
 .queues button:hover {
