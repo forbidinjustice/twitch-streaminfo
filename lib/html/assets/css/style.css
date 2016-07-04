@@ -229,3 +229,112 @@ input:checked + .slider:before {
         background: #323436;
     }
 }
+
+.queues {
+    /*display: none;*/
+    width: 16em;
+    float: left;
+}
+
+.queues h2 {
+    font-size: 16px;
+    color: #FFF;
+    margin: 3px 3px 3px 13px;
+    text-align: center;
+}
+
+.queues ul {
+    list-style-type: none;
+    padding-bottom: 4px;
+}
+
+.queues ul:empty {
+    padding-bottom: 0;
+}
+
+.queues li {
+    color: #8f9395;
+    background: #232426;
+    padding-left: 0.5em;
+    margin-bottom: 6px;
+    opacity: 0.98;
+}
+
+.queues li:last-child {
+    margin-bottom: 2px;
+}
+
+.queues li li {
+    font-size: 14px;
+    margin: 0 8px 0 3px;
+    border-left: 6px solid #545b61;
+}
+
+.queues li li:first-child {
+    border-left: 6px solid #fff;
+}
+
+.queues li:first-child li:first-child {
+    animation: 3750ms 250ms ease-out normal forwards 1 running flash;
+}
+
+.queues h3 {
+    color: #fff;
+    padding: 6px;
+    position: relative;
+}
+
+.queues .count {
+    position: absolute;
+    right: 10px;
+}
+
+.queues li li span {
+    float: right;
+    position: relative;
+    margin-left: 6px;
+    top: 1px;
+    left: 3px;
+}
+
+.queues button {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    opacity: 0.80;
+    border-radius: 2px;
+    border: solid #111 1px;
+    padding-left: 15px;
+}
+
+.queues button:hover {
+    cursor: pointer;
+}
+
+.queues .bump {
+    color: #fff;
+    background: #50555c;
+}
+
+.queues .bump:hover {
+    background: #686e76;
+}
+
+.queues .remove {
+    color: #fff;
+    background: #e83c3c;
+}
+
+.queues .remove:hover {
+    background: #ff0000;
+}
+
+.queues .next {
+    position: relative;
+    background: #5db32b;
+    margin-right: 5px;
+}
+
+.queues .next:hover {
+    background: #73e02f;
+}
