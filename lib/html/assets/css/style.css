@@ -44,12 +44,16 @@ body {
 
 .lower {
     position: relative;
-    top: 530px;
-    height: 520px;
+    height: 310px;
+    margin-top: 10px;
+    display: none;
+    overflow: hidden;
+    border-top: 5px solid rgba(249, 215, 26, 0.8);
+    padding-top: 10px;
 }
 
 .column {
-    height: 520px;
+    height: 100%;
     width: 25em;
     overflow: hidden;
     float: left;
@@ -81,6 +85,10 @@ body {
     font-size: 12px;
     position: relative;
     left: 13px;
+}
+
+.time {
+    margin-bottom: -5px;
 }
 
 .email {
@@ -136,7 +144,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: rgba(200, 200, 200, .8);
     -webkit-transition: .8s;
     transition: .8s;
     border-radius: 34px;
@@ -207,7 +215,7 @@ input:checked + .slider:before {
     color: #fff;
 }
 
-#gradient {
+.upper .gradient {
     position: absolute;
     z-index: 2;
     bottom: 0;
@@ -217,7 +225,17 @@ input:checked + .slider:before {
     background: -webkit-linear-gradient(top, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 1) 100%);
 }
 
-.columns li:first-child {
+.lower .gradient {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: -webkit-linear-gradient(top, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 1) 100%);
+}
+
+.column li:first-child {
     border-color: #f9d71a;
     opacity: 1;
     background: #323436;
