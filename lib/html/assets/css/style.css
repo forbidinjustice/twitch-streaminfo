@@ -20,12 +20,12 @@ body {
     color: #fff;
     opacity: .90;
     background: #232426;
-    padding: 6px;
+    padding: 10px;
 }
 
 .statusBar span {
     margin: 3px;
-    padding: 2px 6px;
+    padding: 2px 10px;
     background: #e83c3c;
     opacity: .85;
     border-radius: 5px;
@@ -118,6 +118,8 @@ body {
     position: absolute;
     bottom: 40px;
     font-size: 14px;
+    width: 99%;
+    text-align: center;
 }
 
 .channel_controls > div {
@@ -255,11 +257,7 @@ input:checked + .slider:before {
 }
 
 .queues {
-    display: none;
-    width: 25em;
-    float: left;
-    position: relative;
-    top: 550px;
+
 }
 
 .queues h2 {
