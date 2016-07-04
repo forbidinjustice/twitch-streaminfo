@@ -17,6 +17,9 @@ var options = {
     mongo: {
         //MongoDB uri. mLab.com is a great 'DB as a service' site and has free tiers available for small traffic applications and testing
         uri: ""
+    },
+    queues: {
+        default_next_shown: 3 //How many names to show by default when !q next is used
     }
 };
 
