@@ -21,6 +21,7 @@ body {
     opacity: .90;
     background: #232426;
     padding: 10px;
+    z-index: 3;
 }
 
 .statusBar span {
@@ -88,7 +89,7 @@ body {
 }
 
 .time {
-    margin-bottom: -10px;
+    margin-bottom: -9px;
 }
 
 .email {
@@ -121,6 +122,7 @@ body {
     font-size: 14px;
     width: 99%;
     text-align: center;
+    z-index: 3;
 }
 
 .channel_controls > div {
