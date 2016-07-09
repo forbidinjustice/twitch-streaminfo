@@ -89,7 +89,12 @@ body {
 }
 
 .time {
+    margin-bottom: -4px;
+}
+
+.time.hide {
     margin-bottom: -9px;
+    visibility: hidden;
 }
 
 .email {
