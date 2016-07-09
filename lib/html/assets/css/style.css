@@ -8,6 +8,7 @@ body {
     background: #141414;
     color: #fff;
     margin: 10px;
+    overflow: hidden;
 }
 
 .statusBar {
@@ -249,7 +250,7 @@ input:checked + .slider:before {
     background: -webkit-linear-gradient(top, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 1) 100%);
 }
 
-.column  li:first-child {
+.column li:first-child {
     border-color: #f9d71a;
     opacity: 1;
     background: #323436;
