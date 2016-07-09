@@ -98,11 +98,15 @@ body {
     margin-top: -5px;
 }
 
+.address {
+    cursor: pointer;
+}
+
 .tips, .subs {
     margin-right: 10px;
 }
 
-.username, .amount {
+.username, .amount, .count {
     font-size: 20px;
 }
 
@@ -240,7 +244,7 @@ input:checked + .slider:before {
     background: -webkit-linear-gradient(top, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 1) 100%);
 }
 
-.column li:first-child {
+.column  li:first-child {
     border-color: #f9d71a;
     opacity: 1;
     background: #323436;
@@ -259,63 +263,27 @@ input:checked + .slider:before {
     }
 }
 
-.queues {
-
-}
-
-.queues h2 {
-    font-size: 16px;
-    color: #FFF;
-    margin: 3px 3px 3px 13px;
-    text-align: center;
-    font-weight: normal;
-}
-
-.queues ul {
-    list-style-type: none;
-    padding-bottom: 4px;
-}
-
-.queues ul:empty {
-    padding-bottom: 0;
-}
-
 .queues li {
-    color: #8f9395;
-    background: #232426;
-    padding-left: 0.5em;
-    margin-bottom: 6px;
-    opacity: 0.98;
-}
-
-.queues li:last-child {
-    margin-bottom: 2px;
-}
-
-.queues li li {
-    font-size: 14px;
-    margin: 0 8px 0 3px;
-    border-left: 6px solid #545b61;
-}
-
-.queues li li:first-child {
-    border-left: 6px solid #fff;
-}
-
-.queues li:first-child li:first-child {
-    animation: 3750ms 250ms ease-out normal forwards 1 running flash;
-}
-
-.queues h3 {
-    color: #fff;
-    padding: 6px 0;
     position: relative;
-    font-weight: normal;
 }
 
 .queues .count {
     position: absolute;
-    right: 10px;
+    right: 20px;
+}
+
+.queues li li {
+    font-size: 14px;
+    margin: 5px 0 0 0;
+    border-left: 6px solid #545b61;
+    padding: 0 5px;
+}
+
+.queues li li:first-child {
+    border-left: 6px solid #fff;
+    margin-top: 10px;
+    background: #232426;
+    animation: none;
 }
 
 .queues li li span {
@@ -335,14 +303,10 @@ input:checked + .slider:before {
     border: solid #111 1px;
     padding-left: 15px;
     outline: none;
-}
-
-.queues button:hover {
     cursor: pointer;
 }
 
 .queues .bump {
-    color: #fff;
     background: #50555c;
 }
 
@@ -351,24 +315,9 @@ input:checked + .slider:before {
 }
 
 .queues .remove {
-    color: #fff;
     background: #e83c3c;
 }
 
 .queues .remove:hover {
     background: #ff0000;
-}
-
-.queues .next {
-    position: relative;
-    background: #5db32b;
-    margin-right: 5px;
-}
-
-.queues .next:hover {
-    background: #73e02f;
-}
-
-.address {
-    cursor: pointer;
 }
