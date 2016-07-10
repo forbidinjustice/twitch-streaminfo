@@ -1,27 +1,28 @@
 {
-  "name": "streaminfo",
-  "version": "1.0.0",
+  "name": "twitch-streaminfo",
+  "version": "1.0.1",
   "description": "Custom page to view twitchalert tips, subs, resubs, cheers, and chat controls.",
   "main": "app.js",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dbkynd/streaminfo.git"
+    "url": "git+https://github.com/dbkynd/twitch-streaminfo.git"
   },
   "author": "DBKynd <db@dbkynd.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dbkynd/streaminfo/issues"
+    "url": "https://github.com/dbkynd/twitch-streaminfo/issues"
   },
-  "homepage": "https://github.com/dbkynd/streaminfo#readme",
+  "homepage": "https://github.com/dbkynd/twitch-streaminfo#readme",
   "dependencies": {
     "ejs": "^2.4.2",
     "express": "^4.14.0",
     "moment": "^2.14.1",
     "mongoose": "^4.5.3",
-    "request": "^2.72.0",
+    "request": "^2.73.0",
     "socket.io": "^1.4.8",
     "tmi.js": "^1.1.1"
   }
