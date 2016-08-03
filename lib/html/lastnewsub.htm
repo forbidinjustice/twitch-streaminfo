@@ -33,6 +33,10 @@
             console.log('Last new sub: ' + data.username);
             $('.name').text(data.username);
         });
+		
+		$(document).ready(function () {
+			$('body').fadeIn(200);
+		});
     </script>
     <style>
         body {
@@ -40,6 +44,7 @@
             margin: 0 auto;
             overflow: hidden;
             font: 16px "Open Sans", sans-serif;
+			display: none;
         }
 
         .name {
