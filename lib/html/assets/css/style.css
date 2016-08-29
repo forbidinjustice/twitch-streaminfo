@@ -203,23 +203,23 @@ input:checked + .slider:before {
 }
 
 .tier_1 {
-    color: #cbc8d0;
+    color: #979797;
 }
 
 .tier_100 {
-    color: #ca7eff;
+    color: #9c3ee8;
 }
 
 .tier_1000 {
-    color: #3ed8b3;
+    color: #1db2a5;
 }
 
 .tier_5000 {
-    color: #49acff;
+    color: #0099fe;
 }
 
 .tier_10000 {
-    color: #ff271e;
+    color: #f43021;
 }
 
 .tier_100000 {
