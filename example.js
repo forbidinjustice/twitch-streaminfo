@@ -9,7 +9,8 @@ var options = {
     twitch: {
         nick: "", //Your Twitch Username
         oauth: "", //Your oauth token. Generate at: http://www.twitchapps.com/tmi/
-        channel: "" //The twitch channel to monitor
+        channel: "", //The twitch channel to monitor
+        client_id: "" //A Twitch App client_id for making Twitch API calls
     },
     twitchalerts: {
         access_token: "" //Access token for twitchalerts api with donations.read scope
