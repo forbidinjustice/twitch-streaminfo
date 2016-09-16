@@ -12,8 +12,8 @@ var options = {
         channel: "", //The twitch channel to monitor
         client_id: "" //A Twitch App client_id for making Twitch API calls
     },
-    twitchalerts: {
-        access_token: "" //Access token for twitchalerts api with donations.read scope
+    streamlabs: {
+        access_token: "" //Access token for streamlabs api with donations.read scope
     },
     mongo: {
         //MongoDB uri. mLab.com is a great 'DB as a service' site and has free tiers available for small traffic applications and testing
