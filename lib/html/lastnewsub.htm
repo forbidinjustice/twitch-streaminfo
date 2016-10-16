@@ -31,7 +31,9 @@
 
         io.on('last_new_sub', function (data) {
             console.log('Last new sub: ' + data.username);
-            $('.name').text(data.username);
+            setTimeout(() => {
+                $('.name').text(data.username);
+            }, 2000);
         });
 		
 		$(document).ready(function () {
