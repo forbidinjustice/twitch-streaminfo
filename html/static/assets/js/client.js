@@ -1,7 +1,7 @@
 'use strict';
 
 //Connect to websocket on same location:port
-var io = io(document.location.href.replace("http", "ws")),
+var io = io(document.location.href.replace('http', 'ws')),
     firstTip = true,
     firstSub = true,
     firstCheer = true,
@@ -10,15 +10,15 @@ var io = io(document.location.href.replace("http", "ws")),
     bitBadges = {};
 
 //Established a connected to the websocket server
-io.on('connected', () => {
-    log("connected to the websocket");
+io.on('connect', () => {
+    log('connected to the websocket');
     $('#socket_status').addClass('connected');
     io.emit('get_bit_badges');
 });
 
 //Disconnected from the websocket server
 io.on('disconnect', () => {
-    log("disconnected from the websocket");
+    log('disconnected from the websocket');
     $('.statusBar span').removeClass('connected');
     firstTip = true;
     firstSub = true;

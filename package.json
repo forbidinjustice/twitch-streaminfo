@@ -1,11 +1,12 @@
 {
   "name": "twitch-streaminfo",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Custom page to view twitchalert tips, subs, resubs, cheers, and chat controls.",
   "main": "app.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ./",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -20,10 +21,12 @@
   "dependencies": {
     "ejs": "^2.5.2",
     "express": "^4.14.0",
-    "moment": "^2.15.0",
-    "mongoose": "^4.6.0",
-    "request": "^2.74.0",
-    "socket.io": "^1.4.8",
-    "tmi.js": "^1.1.1"
+    "moment": "^2.15.1",
+    "mongoose": "^4.6.3",
+    "request": "^2.75.0",
+    "socket.io": "^1.5.0",
+    "tmi.js": "^1.1.2",
+    "winston": "^2.2.0",
+    "winston-daily-rotate-file": "^1.3.1"
   }
 }
