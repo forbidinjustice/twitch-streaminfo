@@ -329,3 +329,7 @@ input:checked + .slider:before {
 .queues .remove:hover {
     background: #ff0000;
 }
+
+.prime {
+    color: #009CDC;
+}

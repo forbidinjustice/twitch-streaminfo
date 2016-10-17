@@ -193,6 +193,9 @@ function addSub(data) {
     $('.subs ul').prepend("<li><div class='time'>" + time + "</div><span class='username'>" + data.username +
         " <span class='amount'>" + months + "</span></span><div class='message'>" + message + "</div></li>");
     if ($('.subs ul').children().length > maxListLength) $('.subs ul li:last-child').remove();
+    if (data.method && data.method.prime) {
+        $('.subs ul').children()[0].addClass('prime');
+    }
 }
 
 function addCheer(data) {
