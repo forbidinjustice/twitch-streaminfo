@@ -6,7 +6,8 @@
   "env": {
     "es6": true,
     "node": true,
-    "browser": true
+    "browser": true,
+    "jquery": true
   },
   "rules": {
     "no-extra-parens": [
