@@ -33,13 +33,12 @@
 
         io.on('last_new_sub', function (data) {
             console.log('Last new sub: ' + data.username);
-            setTimeout(() => {
-                $('.name').text(data.username);
-            }, 2000);
+			$('.name').text(data.username);
         });
 		
 		$(document).ready(function () {
 			$('body').fadeIn(200);
+			io.emit('get_last_new_sub');
 		});
     </script>
     <style>
