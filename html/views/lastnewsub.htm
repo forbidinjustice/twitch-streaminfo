@@ -25,7 +25,9 @@
 
         io.on('subscription', function (data) {
             console.log('subscription: ' + data.username + " x" + (data.months ? data.months : 1));
-            if (data.months) return; //Exit if not a new sub
+            if (data.months > 1) {
+                return;
+            } //Exit if not a new sub
             $('.name').text(data.username);
         });
 
