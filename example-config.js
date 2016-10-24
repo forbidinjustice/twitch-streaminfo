@@ -28,4 +28,10 @@ module.exports = {
     // Your oauth token. Generate at: http://www.twitchapps.com/tmi/
     oauth: '',
   },
+  uptime: {
+    minutesBeforeReset: 15,
+  },
+  games: {
+    count: 5,
+  },
 };
