@@ -5,7 +5,7 @@
   "main": "app.js",
   "devDependencies": {},
   "scripts": {
-    "test": "eslint ./",
+    "lint": "eslint ./",
     "start": "node app.js"
   },
   "repository": {
