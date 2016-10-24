@@ -3,3 +3,4 @@ node_modules/
 /log/
 /config.js
 /lib/games.json
+/creds.json
