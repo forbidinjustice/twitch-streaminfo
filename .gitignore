@@ -4,3 +4,4 @@ node_modules/
 /config.js
 /lib/games.json
 /creds.json
+/html/views/favicon.ico
