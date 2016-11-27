@@ -22,7 +22,7 @@ module.exports = {
     // The twitch channel to monitor
     channel: '',
     // A Twitch App client_id for making Twitch API calls
-    clientId: '',
+    client_id: '',
     // Your Twitch Username
     nick: '',
     // Your oauth token. Generate at: http://www.twitchapps.com/tmi/
