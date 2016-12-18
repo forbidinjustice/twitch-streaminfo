@@ -64,8 +64,7 @@ ws.on('twitch_status', (data) => {
         $('.slow_amount').text(checked ? `(${amount})` : '');
       }
       if (key === 'followersonly') {
-        amount = `${amount}m`;
-        $('.followers_amount').text(checked ? `(${amount})` : '');
+        $('.followers_amount').text(checked ? `(${data[key]}m)` : '');
       }
     }
   }
