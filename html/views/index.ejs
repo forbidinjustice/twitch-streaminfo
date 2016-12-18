@@ -59,6 +59,12 @@
             <div class="slider round"><span>Slow Mode <span class="slow_amount"></span></span></div>
         </label>
     </div>
+    <div class="followersonly">
+        <label class="switch">
+            <input type="checkbox">
+            <div class="slider round"><span>Followers Only <span class="followers_amount"></span></span></div>
+        </label>
+    </div>
     <div class="subscribers">
         <label class="switch">
             <input type="checkbox">
@@ -84,7 +90,7 @@
     <span id='streamlabs_status'>StreamLabs</span>
     <span id='twitch_status'>Twitch</span>
     <span id='bot_status'><%= botName %></span>
-    <span id='revlo_status'>RevloBot</span>
+    <span id='revlo_status' <%= revloBot %>>RevloBot</span>
 </div>
 </body>
 </html>
