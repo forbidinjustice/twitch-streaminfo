@@ -64,12 +64,7 @@ ws.on('twitch_status', (data) => {
         $('.slow_amount').text(checked ? `(${amount})` : '');
       }
       if (key === 'followersonly') {
-        amount = data[key];
-        if (amount > 60) {
-          amount = `${(amount / 60).toFixed(0)}m`;
-        } else {
-          amount = `${amount}s`;
-        }
+        amount = `${amount}m`;
         $('.followers_amount').text(checked ? `(${amount})` : '');
       }
     }
@@ -179,7 +174,7 @@ $(document).ready(() => {
     const checked = $(this).prop('checked');
     let command = `/${name}${checked ? '' : 'off'}`;
     if (name === 'slow' && checked) command += ' 30';
-    if (name === 'followers' && checked) command += ' 900';
+    if (name === 'followers' && checked) command += ' 15';
     ws.emit('command', { command: command });
   });
 });
