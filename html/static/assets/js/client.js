@@ -53,8 +53,18 @@ ws.on('twitch_status', (data) => {
     if (data.hasOwnProperty(key)) {
       const checked = data[key] !== false;
       $(`.channel_controls .${key} input`).prop('checked', checked);
+      let amount;
       if (key === 'slow') {
-        $('.slow_amount').text(checked ? `(${data[key]})` : '');
+        amount = data[key];
+        if (amount > 60) {
+          amount = `${Math.floor(Math.round(amount / 60))}m`;
+        } else {
+          amount = `${amount}s`;
+        }
+        $('.slow_amount').text(checked ? `(${amount})` : '');
+      }
+      if (key === 'followersonly') {
+        $('.followers_amount').text(checked ? `(${data[key]}m)` : '');
       }
     }
   }
@@ -139,9 +149,9 @@ ws.on('queues_list', (data) => {
     }
     for (let j = 0; j < max; j++) {
       $(`.names_${data[i].queue}`).append(`<li>${data[i].names[j]}<span class='queue_buttons'><button class='bump' ` +
-        `title='Bump - ${data[i].names[j]}' onclick='queueBtn(\"!q b ${data[i].queue} ${data[i].names[j]}\")'>` +
-        `</button><button class='remove' title='Remove - ${data[i].names[j]}' onclick='queueBtn(\"!q r ` +
-        `${data[i].queue} ${data[i].names[j]}\")'></button></span></li>`);
+        `title='Bump - ${data[i].names[j]}' onclick='queueBtn("!q b ${data[i].queue} ${data[i].names[j]}")'>` +
+        `</button><button class='remove' title='Remove - ${data[i].names[j]}' onclick='queueBtn("!q r ` +
+        `${data[i].queue} ${data[i].names[j]}")'></button></span></li>`);
     }
   }
 });
@@ -156,14 +166,14 @@ $(document).ready(() => {
     $('.lower').fadeIn(500);
   }, 1000);
 
-  $('.channel_controls input').click(function(e) {
+  $('.channel_controls input').click(function (e) {
     e.preventDefault();
-    const name = $(this).parent().parent()[0].className;
+    let name = $(this).parent().parent()[0].className;
+    if (name === 'followersonly') name = 'followers';
     const checked = $(this).prop('checked');
     let command = `/${name}${checked ? '' : 'off'}`;
-    if (name === 'slow' && checked) {
-      command += ' 30';
-    }
+    if (name === 'slow' && checked) command += ' 30';
+    if (name === 'followers' && checked) command += ' 15';
     ws.emit('command', { command: command });
   });
 });
@@ -182,7 +192,7 @@ function addTip(data) {
     $('.tips ul li:last-child').remove();
   }
 
-  $('.tips ul li:first-child .address').click(function() {
+  $('.tips ul li:first-child .address').click(function () {
     $(this).text($(this).data('email'));
   });
 }

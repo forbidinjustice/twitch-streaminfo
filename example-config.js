@@ -2,6 +2,8 @@
 module.exports = {
   // This sets the bot name in the page's status bar and is what we monitor if it's in-channel
   modBotName: 'NightBot',
+  // Show RevloBot Status on page
+  revloBot: true,
   // MongoDB uri
   mongo: {
     uri: '',
