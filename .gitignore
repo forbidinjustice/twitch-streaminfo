@@ -5,3 +5,4 @@ node_modules/
 /lib/games.json
 /creds.json
 /html/views/favicon.ico
+/npm-debug.log
