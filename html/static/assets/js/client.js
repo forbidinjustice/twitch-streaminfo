@@ -74,7 +74,7 @@ ws.on('twitch_status', (data) => {
 ws.on('tips_list', (data) => {
   console.log('tips_list', data);
   data.forEach((tip) => {
-    addTip(tip);
+    addTip(tip, true);
   });
 });
 
@@ -82,7 +82,7 @@ ws.on('tips_list', (data) => {
 ws.on('subscribers_list', (data) => {
   console.log('subscribers_list', data);
   data.forEach((sub) => {
-    addSub(sub);
+    addSub(sub, true);
   });
 });
 
@@ -90,7 +90,7 @@ ws.on('subscribers_list', (data) => {
 ws.on('cheers_list', (data) => {
   console.log('cheers_list', data);
   data.forEach((cheer) => {
-    addCheer(cheer);
+    addCheer(cheer, true);
   });
 });
 
@@ -125,11 +125,16 @@ ws.on('host', (data) => {
     $('.hosts ul').empty();
   }
   $('.hosts').animate({ scrollTop: 0 }, 'slow');
-  $('.hosts ul').prepend(`<li><div class='time'>${getTime()}</div><span class='username'>${data.username}` +
+  $('.hosts ul').prepend(`<li class="highlighted"><div class='time'>${getTime()}` +
+    `</div><span class='username'>${data.username}` +
     `</span> for <span class='amount'>(${data.viewers})</span> viewer${(data.viewers === 1 ? '' : 's')}</li>`);
   if ($('.hosts ul').children().length > maxListLength) {
     $('.hosts ul li:last-child').remove();
   }
+
+  $('.hosts li').click(function (e) {
+    $(this).addClass('cleared');
+  });
 });
 
 // Received Queues list
@@ -137,18 +142,21 @@ ws.on('queues_list', (data) => {
   console.log('queues_list', data);
   $('.queues ul').empty();
   if (data.length === 0) {
-    $('.queues > ul').append("<li><div class='time hide'>Date</div><span class='username'>Queues</span></li>");
+    $('.queues > ul').append("<li class='cleared'><div class='time hide'>Date</div>` +" +
+      "`<span class='username'>Queues</span></li>");
     return;
   }
   for (let i = 0; i < data.length; i++) {
-    $('.queues > ul').append(`<li><div class='time hide'>Date</div><span class='username'>${data[i].queue}</span>` +
+    $('.queues > ul').append(`<li class='cleared'><div class='time hide'>Date</div>` +
+      `<span class='username'>${data[i].queue}</span>` +
       `<span class='count'>${data[i].names.length}</span><ul class='names_${data[i].queue}'></ul></li>`);
     let max = 4;
     if (max > data[i].names.length) {
       max = data[i].names.length;
     }
     for (let j = 0; j < max; j++) {
-      $(`.names_${data[i].queue}`).append(`<li>${data[i].names[j]}<span class='queue_buttons'><button class='bump' ` +
+      $(`.names_${data[i].queue}`).append(`<li class='cleared'>${data[i].names[j]}` +
+        `<span class='queue_buttons'><button class='bump' ` +
         `title='Bump - ${data[i].names[j]}' onclick='queueBtn("!q b ${data[i].queue} ${data[i].names[j]}")'>` +
         `</button><button class='remove' title='Remove - ${data[i].names[j]}' onclick='queueBtn("!q r ` +
         `${data[i].queue} ${data[i].names[j]}")'></button></span></li>`);
@@ -178,14 +186,15 @@ $(document).ready(() => {
   });
 });
 
-function addTip(data) {
+function addTip(data, cleared) {
   if (firstTip) {
     firstTip = false;
     $('.tips ul').empty();
   }
   const time = getTime(parseInt(`${data.created_at}000`));
   const usd = parseFloat(data.amount).toFixed(2);
-  $('.tips ul').prepend(`<li><div class='time'>${time}</div><span class='username'>${data.name}` +
+  $('.tips ul').prepend(`<li class="${cleared ? 'cleared' : ''}">` +
+    `<div class='time'>${time}</div><span class='username'>${data.name}` +
     ` <span class='amount'>$${usd}</span></span><div class='message'>${data.message}` +
     `</div><div class='email'><span class='address' data-email='${data.email}'>Show email</span></div></li>`);
   if ($('.tips ul').children().length > maxListLength) {
@@ -195,9 +204,13 @@ function addTip(data) {
   $('.tips ul li:first-child .address').click(function () {
     $(this).text($(this).data('email'));
   });
+
+  $('.tips li').click(function (e) {
+    $(this).addClass('cleared');
+  });
 }
 
-function addSub(data) {
+function addSub(data, cleared) {
   if (firstSub) {
     firstSub = false;
     $('.subs ul').empty();
@@ -205,7 +218,8 @@ function addSub(data) {
   const months = data.months > 1 ? `(${data.months} months)` : '(NEW SUB)';
   const message = data.message ? data.message : '';
   const primeBadge = 'https://static-cdn.jtvnw.net/badges/v1/a1dd5073-19c3-4911-8cb4-c464a7bc1510/1';
-  $('.subs ul').prepend(`<li><div class='prime' hidden><img src=${primeBadge}>` +
+  $('.subs ul').prepend(`<li class="${cleared ? 'cleared' : ''}">` +
+    `<div class='prime' hidden><img src=${primeBadge}>` +
     `</div><div class='time'>${getTime(data.date)}</div><span class='username'>${data.username}` +
     ` <span class='amount'>${months}</span></span><div class='message'>${message}</div></li>`);
   if ($('.subs ul').children().length > maxListLength) {
@@ -214,20 +228,27 @@ function addSub(data) {
   if (data.method && data.method.prime) {
     $($('.subs ul').children()[0]).find('.prime').show();
   }
+  $('.subs li').click(function (e) {
+    $(this).addClass('cleared');
+  });
 }
 
-function addCheer(data) {
+function addCheer(data, cleared) {
   if (firstCheer) {
     firstCheer = false;
     $('.cheers ul').empty();
   }
   const message = getCheerBadges(data.message);
-  $('.cheers ul').prepend(`<li><div class='time'>${getTime(data.date)}</div><span class='username'>${data.username}` +
+  $('.cheers ul').prepend(`<li class="${cleared ? 'cleared' : ''}">` +
+    `<div class='time'>${getTime(data.date)}</div><span class='username'>${data.username}` +
     ` <span class='amount tie_${getBitTier(data.bits)}'>(${data.bits})</span></span><div class='message'>` +
     `${message}</div></li>`);
   if ($('.cheers ul').children().length > maxListLength) {
     $('.cheers ul li:last-child').remove();
   }
+  $('.cheers li').click(function (e) {
+    $(this).addClass('cleared');
+  });
 }
 
 function getCheerBadges(message) {

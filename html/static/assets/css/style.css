@@ -76,7 +76,7 @@ body {
 .column li {
     position: relative;
     color: #aeb2b4;
-    background: #232426;
+    background: #6441A4;
     margin-bottom: 10px;
     border-left: 8px solid #3d7ba6;
     opacity: 0.85;
@@ -234,6 +234,7 @@ input:checked + .slider:before {
 }
 
 .upper .gradient {
+    pointer-events: none;
     position: absolute;
     z-index: 2;
     bottom: 0;
@@ -244,6 +245,7 @@ input:checked + .slider:before {
 }
 
 .lower .gradient {
+    pointer-events: none;
     position: absolute;
     z-index: 2;
     bottom: 0;
@@ -256,20 +258,25 @@ input:checked + .slider:before {
 .column li:first-child {
     border-color: #f9d71a;
     opacity: 1;
-    background: #323436;
+    background: #6441A4;
     animation: 3750ms 250ms ease-out normal forwards 1 running flash;
 }
 
 @keyframes flash {
     0%, 100% {
-        background: #323436;
+        background: #6441A4;
     }
     15% {
-        background: #5e6266;
+        background: #9d52ee;
     }
     30% {
-        background: #323436;
+        background: #6441A4;
     }
+}
+
+.cleared {
+    background: #323436 !important;
+    animation: none  !important;
 }
 
 .queues li {
