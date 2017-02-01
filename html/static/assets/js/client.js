@@ -181,7 +181,7 @@ $(document).ready(() => {
     const checked = $(this).prop('checked');
     let command = `/${name}${checked ? '' : 'off'}`;
     if (name === 'slow' && checked) command += ' 30';
-    if (name === 'followers' && checked) command += ' 15';
+    if (name === 'followers' && checked) command += ' 5';
     ws.emit('command', { command: command });
   });
 });
