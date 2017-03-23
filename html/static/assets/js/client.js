@@ -8,6 +8,7 @@ let firstCheer = true;
 let firstHost = true;
 const maxListLength = 25;
 let bitBadges = {};
+const subs = [];
 
 // Established a connected to the websocket server
 ws.on('connect', () => {
@@ -132,8 +133,8 @@ ws.on('host', (data) => {
     $('.hosts ul li:last-child').remove();
   }
 
-  $('.hosts li').click(function (e) {
-    $(this).addClass('cleared');
+  $('.hosts li').click(e => {
+    $(e.currentTarget).addClass('cleared');
   });
 });
 
@@ -174,11 +175,11 @@ $(document).ready(() => {
     $('.lower').fadeIn(500);
   }, 1000);
 
-  $('.channel_controls input').click(function (e) {
+  $('.channel_controls input').click(e => {
     e.preventDefault();
-    let name = $(this).parent().parent()[0].className;
+    let name = $(e.currentTarget).parent().parent()[0].className;
     if (name === 'followersonly') name = 'followers';
-    const checked = $(this).prop('checked');
+    const checked = $(e.currentTarget).prop('checked');
     let command = `/${name}${checked ? '' : 'off'}`;
     if (name === 'slow' && checked) command += ' 30';
     if (name === 'followers' && checked) command += ' 5';
@@ -201,12 +202,12 @@ function addTip(data, cleared) {
     $('.tips ul li:last-child').remove();
   }
 
-  $('.tips ul li:first-child .address').click(function () {
-    $(this).text($(this).data('email'));
+  $('.tips ul li:first-child .address').click(e => {
+    $(e.currentTarget).text($(e.currentTarget).data('email'));
   });
 
-  $('.tips li').click(function (e) {
-    $(this).addClass('cleared');
+  $('.tips li').click(e => {
+    $(e.currentTarget).addClass('cleared');
   });
 }
 
@@ -215,21 +216,29 @@ function addSub(data, cleared) {
     firstSub = false;
     $('.subs ul').empty();
   }
+  const filter = subs.find(x => x.name === data.name && x.date === data.date);
+  if (filter) {
+    console.log('Sub was already in the list. Most likely a multiple months subscription.');
+    return;
+  }
+  subs.push(data);
+  if (subs.length > 25) subs.shift();
+  const subsList = $('.subs ul');
   const months = data.months > 1 ? `(${data.months} months)` : '(NEW SUB)';
   const message = data.message ? data.message : '';
   const primeBadge = 'https://static-cdn.jtvnw.net/badges/v1/a1dd5073-19c3-4911-8cb4-c464a7bc1510/1';
-  $('.subs ul').prepend(`<li class="${cleared ? 'cleared' : ''}">` +
+  subsList.prepend(`<li class="${cleared ? 'cleared' : ''}">` +
     `<div class='prime' hidden><img src=${primeBadge}>` +
     `</div><div class='time'>${getTime(data.date)}</div><span class='username'>${data.username}` +
     ` <span class='amount'>${months}</span></span><div class='message'>${message}</div></li>`);
-  if ($('.subs ul').children().length > maxListLength) {
+  if (subsList.children().length > maxListLength) {
     $('.subs ul li:last-child').remove();
   }
   if (data.method && data.method.prime) {
-    $($('.subs ul').children()[0]).find('.prime').show();
+    $(subsList.children()[0]).find('.prime').show();
   }
-  $('.subs li').click(function (e) {
-    $(this).addClass('cleared');
+  $('.subs li').click(e => {
+    $(e.currentTarget).addClass('cleared');
   });
 }
 
@@ -246,8 +255,8 @@ function addCheer(data, cleared) {
   if ($('.cheers ul').children().length > maxListLength) {
     $('.cheers ul li:last-child').remove();
   }
-  $('.cheers li').click(function (e) {
-    $(this).addClass('cleared');
+  $('.cheers li').click(e => {
+    $(e.currentTarget).addClass('cleared');
   });
 }
 
