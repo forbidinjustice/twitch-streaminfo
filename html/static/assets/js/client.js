@@ -217,13 +217,13 @@ function addSub(data, cleared) {
     firstSub = false;
     $('.subs ul').empty();
   }
-  const filter = subs.find(x => x.name === data.name && x.date === data.date);
+  const filter = subs.find(x => x.username === data.username);
   if (filter) {
     console.log('Sub was already in the list. Most likely a multiple months subscription.');
     return;
   }
   subs.push(data);
-  if (subs.length > 25) subs.shift();
+  if (subs.length > 5) subs.shift();
   const subsList = $('.subs ul');
   const months = data.months > 1 ? `(${data.months} months)` : '(NEW SUB)';
   const message = data.message ? data.message : '';
