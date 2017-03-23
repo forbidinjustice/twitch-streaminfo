@@ -8,7 +8,7 @@ let firstCheer = true;
 let firstHost = true;
 const maxListLength = 25;
 let bitBadges = {};
-const subs = [];
+let subs = [];
 
 // Established a connected to the websocket server
 ws.on('connect', () => {
@@ -75,15 +75,16 @@ ws.on('twitch_status', (data) => {
 ws.on('tips_list', (data) => {
   console.log('tips_list', data);
   data.forEach((tip) => {
-    addTip(tip, true);
+    addTip(tip, !firstTip);
   });
 });
 
 // Received initial Subscribers list
 ws.on('subscribers_list', (data) => {
   console.log('subscribers_list', data);
+  subs = [];
   data.forEach((sub) => {
-    addSub(sub, true);
+    addSub(sub, !firstSub);
   });
 });
 
@@ -91,7 +92,7 @@ ws.on('subscribers_list', (data) => {
 ws.on('cheers_list', (data) => {
   console.log('cheers_list', data);
   data.forEach((cheer) => {
-    addCheer(cheer, true);
+    addCheer(cheer, !firstCheer);
   });
 });
 
