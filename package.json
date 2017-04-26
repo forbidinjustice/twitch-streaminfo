@@ -3,7 +3,9 @@
   "version": "1.1.0",
   "description": "Custom page to view twitchalert tips, subs, resubs, cheers, and chat controls.",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  },
   "scripts": {
     "start": "node app.js"
   },
