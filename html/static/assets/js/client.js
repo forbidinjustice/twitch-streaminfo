@@ -82,18 +82,24 @@ ws.on('tips_list', (data) => {
 // Received initial Subscribers list
 ws.on('subscribers_list', (data) => {
   console.log('subscribers_list', data);
+  if (!firstSub) return;
   subs = [];
-  data.forEach((sub) => {
-    addSub(sub, !firstSub);
-  });
+  data
+    .filter(x => x.sub)
+    .forEach(sub => {
+      addSub(sub.sub, false);
+    });
 });
 
 // Received initial Cheers list
 ws.on('cheers_list', (data) => {
   console.log('cheers_list', data);
-  data.forEach((cheer) => {
-    addCheer(cheer, !firstCheer);
-  });
+  if (!firstCheer) return;
+  data
+    .filter(x => x.cheer)
+    .forEach(cheer => {
+      addCheer(cheer.cheer, true);
+    });
 });
 
 // Received New Tips
@@ -212,47 +218,51 @@ function addTip(data, cleared) {
   });
 }
 
-function addSub(data, cleared) {
+function addSub(sub, cleared) {
   if (firstSub) {
     firstSub = false;
     $('.subs ul').empty();
   }
-  const filter = subs.find(x => x.username === data.username);
+  const filter = subs.find(x => x.user_id === sub.user_id);
   if (filter) {
     console.log('Sub was already in the list. Most likely a multiple months subscription.');
     return;
   }
-  subs.push(data);
+  subs.push(sub);
   if (subs.length > 5) subs.shift();
   const subsList = $('.subs ul');
-  const months = data.months > 1 ? `(${data.months} months)` : '(NEW SUB)';
-  const message = data.message ? data.message : '';
+  const months = sub.months > 1 ? `(${sub.months} months)` : '(NEW SUB)';
+  const message = sub.sub_message ? sub.sub_message : '';
   const primeBadge = 'https://static-cdn.jtvnw.net/badges/v1/a1dd5073-19c3-4911-8cb4-c464a7bc1510/1';
-  subsList.prepend(`<li class="${cleared ? 'cleared' : ''}">` +
-    `<div class='prime' hidden><img src=${primeBadge}>` +
-    `</div><div class='time'>${getTime(data.date)}</div><span class='username'>${data.username}` +
-    ` <span class='amount'>${months}</span></span><div class='message'>${message}</div></li>`);
+  subsList.prepend(`<li class="${cleared ? 'cleared' : ''}"><div class='prime' hidden><img src=${primeBadge}>` +
+    `</div><div class='subTier' hidden></div><div class='time'>${getTime(sub.time)}</div>` +
+    `<span class='username'>${sub.display_name} <span class='amount'>${months}</span></span>` +
+    `<div class='message'>${message}</div></li>`);
   if (subsList.children().length > maxListLength) {
     $('.subs ul li:last-child').remove();
   }
-  if (data.method && data.method.prime) {
+  if (sub.sub_plan === 'Prime') {
     $(subsList.children()[0]).find('.prime').show();
+  } else if (sub.sub_plan === 2000) {
+    $(subsList.children()[0]).find('.subTier').text('$10');
+  } else if (sub.sub_plan === 3000) {
+    $(subsList.children()[0]).find('.subTier').text('$25');
   }
   $('.subs li').click(e => {
     $(e.currentTarget).addClass('cleared');
   });
 }
 
-function addCheer(data, cleared) {
+function addCheer(cheer, cleared) {
   if (firstCheer) {
     firstCheer = false;
     $('.cheers ul').empty();
   }
-  const message = getCheerBadges(data.message);
+  const message = getCheerBadges(cheer.chat_message);
   $('.cheers ul').prepend(`<li class="${cleared ? 'cleared' : ''}">` +
-    `<div class='time'>${getTime(data.date)}</div><span class='username'>${data.username}` +
-    ` <span class='amount tie_${getBitTier(data.bits)}'>(${data.bits})</span></span><div class='message'>` +
-    `${message}</div></li>`);
+    `<div class='time'>${getTime(cheer.time)}</div><span class='username'>${cheer.user_name}` +
+    ` <span class='amount tie_${getBitTier(cheer.bits_used)}'>(${cheer.bits_used})</span></span>
+    <div class='message'>${message}</div></li>`);
   if ($('.cheers ul').children().length > maxListLength) {
     $('.cheers ul li:last-child').remove();
   }

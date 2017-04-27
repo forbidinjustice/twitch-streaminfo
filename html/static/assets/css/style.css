@@ -347,3 +347,11 @@ input:checked + .slider:before {
 .prime img {
     height: 12px;
 }
+
+.subTier {
+    position: absolute;
+    right: 3px;
+    bottom: -2px;
+    color: #f9d71a;
+    font-size: .75em;
+}
