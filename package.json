@@ -29,7 +29,7 @@
     "request": "^2.81.0",
     "socket.io": "^1.7.3",
     "tmi.js": "github:dbkynd/tmi.js",
-    "twitchps": "github:dbkynd/twitchPS",
+    "twitchps": "^0.5.3",
     "winston": "^2.3.1",
     "winston-daily-rotate-file": "^1.4.6",
     "ws": "^2.3.1"
