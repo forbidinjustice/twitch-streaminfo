@@ -48,8 +48,8 @@ ws.on('status', (data) => {
 });
 
 // Twitch Status Change
-ws.on('twitch_status', (data) => {
-  console.log('twitch_status', data);
+ws.on('twitch_chat_status', (data) => {
+  console.log('twitch_chat_status', data);
   for (const key in data) {
     if (data.hasOwnProperty(key)) {
       const checked = data[key] !== false;
@@ -74,6 +74,7 @@ ws.on('twitch_status', (data) => {
 // Received initial Tips list
 ws.on('tips_list', (data) => {
   console.log('tips_list', data);
+  if (!firstTip) return;
   data.forEach((tip) => {
     addTip(tip, !firstTip);
   });
