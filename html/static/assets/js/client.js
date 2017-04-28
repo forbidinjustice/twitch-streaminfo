@@ -233,7 +233,7 @@ function addSub(sub, cleared) {
   if (subs.length > 5) subs.shift();
   const subsList = $('.subs ul');
   const months = sub.months > 1 ? `(${sub.months} months)` : '(NEW SUB)';
-  const message = sub.sub_message ? sub.sub_message : '';
+  const message = sub.sub_message.message ? sub.sub_message.message : '';
   const primeBadge = 'https://static-cdn.jtvnw.net/badges/v1/a1dd5073-19c3-4911-8cb4-c464a7bc1510/1';
   subsList.prepend(`<li class="${cleared ? 'cleared' : ''}"><div class='prime' hidden><img src=${primeBadge}>` +
     `</div><div class='subTier' hidden></div><div class='time'>${getTime(sub.time)}</div>` +
