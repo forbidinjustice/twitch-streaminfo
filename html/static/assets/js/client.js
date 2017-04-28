@@ -245,9 +245,13 @@ function addSub(sub, cleared) {
   if (sub.sub_plan === 'Prime') {
     $(subsList.children()[0]).find('.prime').show();
   } else if (sub.sub_plan === '2000') {
-    $(subsList.children()[0]).find('.subTier').text('$10');
+    $(subsList.children()[0]).find('.subTier')
+      .show()
+      .text('$10');
   } else if (sub.sub_plan === '3000') {
-    $(subsList.children()[0]).find('.subTier').text('$25');
+    $(subsList.children()[0]).find('.subTier')
+      .show()
+      .text('$25');
   }
   $('.subs li').click(e => {
     $(e.currentTarget).addClass('cleared');
