@@ -244,14 +244,18 @@ function addSub(sub, cleared) {
   }
   if (sub.sub_plan === 'Prime') {
     $(subsList.children()[0]).find('.prime').show();
+  } else if (sub.sub_plan === '1000') {
+    $(subsList.children()[0]).find('.subTier')
+      .show()
+      .text('$5');
   } else if (sub.sub_plan === '2000') {
     $(subsList.children()[0]).find('.subTier')
       .show()
-      .html('$10');
+      .text('$10');
   } else if (sub.sub_plan === '3000') {
     $(subsList.children()[0]).find('.subTier')
       .show()
-      .html('$25');
+      .text('$25');
   }
   $('.subs li').click(e => {
     $(e.currentTarget).addClass('cleared');

@@ -358,5 +358,6 @@ input:checked + .slider::before {
 .subTier {
   position: absolute;
   right: 2px;
+  bottom: 0;
   color: #f9d71a;
 }
