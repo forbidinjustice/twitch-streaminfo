@@ -29,6 +29,8 @@ module.exports = {
     nick: '',
     // Your oauth token. Generate at: http://www.twitchapps.com/tmi/
     oauth: '',
+    // Your access token with check_subscriptions scope
+    accessToken: '',
   },
   uptime: {
     minutesBeforeReset: 15,
