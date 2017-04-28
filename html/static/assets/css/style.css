@@ -81,6 +81,7 @@ body {
   border-left: 8px solid #3d7ba6;
   opacity: 0.85;
   padding: 0 12px 12px;
+  cursor: default;
 }
 
 .time,
