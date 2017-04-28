@@ -76,7 +76,7 @@ ws.on('tips_list', (data) => {
   console.log('tips_list', data);
   if (!firstTip) return;
   data.forEach((tip) => {
-    addTip(tip, !firstTip);
+    addTip(tip, true);
   });
 });
 
@@ -88,7 +88,7 @@ ws.on('subscribers_list', (data) => {
   data
     .filter(x => x.sub)
     .forEach(sub => {
-      addSub(sub.sub, false);
+      addSub(sub.sub, true);
     });
 });
 
