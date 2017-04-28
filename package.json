@@ -3,9 +3,6 @@
   "version": "1.1.0",
   "description": "Custom page to view twitchalert tips, subs, resubs, cheers, and chat controls.",
   "main": "app.js",
-  "devDependencies": {
-    "eslint": "^3.19.0"
-  },
   "scripts": {
     "start": "node app.js"
   },
@@ -33,5 +30,10 @@
     "winston": "^2.3.1",
     "winston-daily-rotate-file": "^1.4.6",
     "ws": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "stylelint": "^7.10.1",
+    "stylelint-config-standard": "^16.0.0"
   }
 }
